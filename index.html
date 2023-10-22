@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check From Online</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="icon-flag.ico" type="image/x-icon">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+body {
+  margin: 0;
+    min-height: 100vh;
+    font-family: 'Nosifer', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 20px;
+  }
+  @media (max-width: 765px) {
+    body {
+      background-image: url(bg-mobil.png);
+    }
+  }
+  @media (min-width: 766px) {
+    body {
+      background-image: url(bg-desktop.png);
+    }
+  }
+    .container {
+    display: flex;
+    justify-content: center;
+}
+.person {
+    margin-top: 100px;
+    position: relative;
+    filter: brightness(1);
+    color: red;
+}
+.person.off {
+  filter: brightness(0.5);
+  color: #757575;
+}
+.person::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #00b506;
+  border-radius: 50%;
+  right: 15px;
+  top: 40px;
+}
+.person.off::before {
+  right: 40px;
+  background-color: #757575;
+}
+    img {
+      width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 0 #000000;
+  }
+  h2, h3 {
+    filter: brightness(0.5);
+  }
+h2 {
+    font-size: 40px;
+    margin: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+<div class="person" id="person">
+  <img src="person online.jpg" alt="Your photo">
+  <h2>You Online</h2>
+  <h3>Free Palestine</h3>
+</div>
+  </div>
+  <script >
+    const person = document.getElementById("person");
+
+window.addEventListener("load", () => window.navigator.onLine ? online() : offline())
+window.addEventListener("online",  online)
+window.addEventListener("offline", offline)
+
+function online() {
+  person.classList.remove("off");
+  person.children[1].textContent = 'You Online';
+}
+function offline() {
+  person.classList.add("off");
+  person.children[1].textContent = 'You Offline';
+}
+  </script>
+</body>
+</html>
